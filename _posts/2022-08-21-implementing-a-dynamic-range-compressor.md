@@ -114,11 +114,11 @@ Learning about this gave me an idea - options for adjusting compression time dyn
 
 Looking back to Ableton Live's compressor, there are two envelope modes: *Logarithmic* and *Linear*. In linear mode the dynamics are no longer simple exponential decay. When the compressor attacks, the gain reduction increases very quickly and then decays more smoothly to the target value. When the compressor release, the gain reduction decreases linearly for a while and then decays more smoothly to the target value. This suggests the algorithm uses a different method for determining the iterative update depending on the how far the compressor is from the target gain reduction.
 
-Single attack and release parameters allow the user to define different time dynamics when the gain reduction is above or below the target. Going back to exponential decay, my proposal is that this can be generalised to multiple time constants for different ranges of difference from the target. The ranges can be expressed in terms of the ratio of the gain reduction error to the current target value. Defining
+Single attack and release parameters allow the user to define different time dynamics when the gain reduction is above or below the target. Going back to exponential decay, my proposal is that this can be generalised to multiple time constants for different ranges of difference from the target. The ranges can be expressed in terms of the ratio of the gain reduction error to the current target value. We can define the current proportional error $f(t_2)$
 
 $$f(t_2) = \frac{R(t_2) - R'(t_1)}{R(t_2)} $$
 
-an example with four time constants could be:
+The decay rate can then be varied as a function of this quantity. For example we can define attack and release with two phases, with the phase threshold at half of the target gain reduction:
 
 $$
 \tau = \begin{cases} 
@@ -129,7 +129,7 @@ $$
   \end{cases}
 $$
 
-There could be more than four ranges and the thresholds on $f(t_2)$ could be varied as well. The resulting shapes of the attack and release could be represented and edited visually, which would enable a user to program the exact compression dynamics they want.
+There could be more than four ranges and the thresholds on $f(t_2)$ could be varied as well. The resulting shapes of the attack and release could be represented and edited visually, which would enable a user to program the exact compression dynamics they want. I think this would be particularly useful for creating rhythmic effects in a sidechain scenario.
 
 # Project idea
 I decided in order to learn more about implementing audio DSP in practice an interesting project would be to implement a compressor similar in spirit to Ableton Live's compressor. A user could upload a sound file and loop it while adjusting the compression parameters and observing the behaviour changes as they would in a DAW plugin. It could also include some implementation of the extra attack and release parameters described above and even a graphical editor to do this intuitively.
