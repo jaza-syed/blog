@@ -70,7 +70,7 @@ From Google searching I couldn't find much information on how to implement a com
 
 A typical definition of attack time is the time is the time taken for the level reduction to reach a given fraction (normally two thirds) of the target level reduction. A given time period for a given fractional reduction suggests an underlying mechanism of _exponential decay_ towards the target value. The screenshots of the gain reduction dynamics from Ableton Live's compressor also look like exponential decay. 
 
-We define the actual gain reduction as $R'(t)$ (in contrast to the target gain reduction $R(t)$). Given times $t_1$ and $t_2$ where $t_2 > t_1$ we want to define an exponential decay of $R(t_2)$ towards the target $R'(t_2)$ from the current value $R(t_1)$. We can therefore define for some constant $C$ and a decay time constant $\tau$
+We define the actual gain reduction as $R'(t)$ (in contrast to the target gain reduction $R(t)$. If we say that $R'(t)$ is an exponential decay curve towards $R(t_2)$ at times $t_1$ and $t_2$ where $t_2>t_1$, we can define: 
 
 $$
 \begin{align*} 
