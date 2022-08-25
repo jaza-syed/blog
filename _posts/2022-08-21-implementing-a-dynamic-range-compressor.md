@@ -66,7 +66,7 @@ The "standard" definitions given in the Live manual make sense now as defining s
 
 # Implementing a compressor
 
-From Google searching I couldn't find much information on how to implement a compressor digitally *including attack and release* until I found the [presentation](http://c4dm.eecs.qmul.ac.uk/audioengineering/compressors/documents/Reiss-Tutorialondynamicrangecompression.pdf) mentioned in the introduction (which is not easily accessible). I tried to come up with an approach myself before I found that resource which follows below.
+From Google searching I couldn't find much information on how to implement a compressor digitally *including attack and release* until I found this [presentation](http://c4dm.eecs.qmul.ac.uk/audioengineering/compressors/documents/Reiss-Tutorialondynamicrangecompression.pdf) from the Center For Digital Music at Queen Mary University London. I tried to come up with an approach myself before I found that resource which follows below.
 
 A typical definition of attack time is the time is the time taken for the level reduction to reach a given fraction (normally two thirds) of the target level reduction. A given time period for a given fractional reduction suggests an underlying mechanism of _exponential decay_ towards the target value. The screenshots of the gain reduction dynamics from Ableton Live's compressor also look like exponential decay. 
 
@@ -98,7 +98,7 @@ As the gain reduction is always less than 0 for the compression case (as opposed
 
 $$ \begin{equation} c(t) = i(t) + R'(t) \end{equation} $$
 
-The approach I derived is equivalent to simply applying an exponential smoothing filter to the envelope (where the smoothing factor changes depending whether the envelope is rising or falling) as suggested on page 13 of the QMUL presentation, then scaling the input as in \eqref{eq:noattack}.
+The approach I derived is equivalent to simply applying an exponential smoothing filter to the envelope (where the smoothing factor changes depending on whether the compressor is attacking or releasing) as suggested on page 13 of the QMUL presentation, then scaling the input as in \eqref{eq:noattack}.
 
 # Greater control of gain reduction dynamics
 
