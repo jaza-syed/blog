@@ -44,7 +44,7 @@ $$ \begin{equation} \label{eq:noattack} c(t) = i(t) + T(e(t)) - e(t) \end{equati
 
 Note that adding $T(e(t)) - e(t)$ from the signal in dB is equivalent to multiplication by $\frac{T(e(t))}{e(t)}$ if the signal levels were on a linear scale. The quantity $T(e(t)) - e(t)$ is known as the *gain reduction*, which we will refer to as $R(t)$ from now.
 
-Most compressors have a parameter called knee, which controls how sharp $T(e)$ is around the threshold. This is typically set in dB and corresponds to the range of the input level over which the compressor transitions to full operation. A knee of 0dB as in \eqref{eq:hardknee} is known as a *hard knee*.
+Most compressors have a parameter called knee, which controls how sharp $T(e)$ is around the threshold. This is typically set in dB and corresponds to the range of the input level over which the compressor transitions to full operation. A knee of 0dB as in \eqref{eq:hardknee} is known as a *hard knee*. Examples are shown below:
 
 Varying the ratio with a hard knee | Soft knee 
 ---|---
@@ -144,4 +144,4 @@ There could be more than four ranges and the thresholds on $f(t_2)$ could be var
 
 I decided in order to learn more about implementing audio DSP in practice an interesting project would be to implement compressor similar in spirit to Ableton Live's compressor, with options for extra parameterisation of the attack and release as described above. I'm planning to make this as a VST3 plugin with [JUCE](https://juce.com/). I'll initially implement it with a bare-minimum frontend to test out how it sounds then add graphical features.
 
-As an aside, I came across an interesting project [web-synth](web-synth) by github user [Ameobea](https://github.com/ameobea/) which is browser-based music production tool with a really interesting tech stack. It has a Typescript based frontend which uses the WebAudio API to call custom DSP code written in Rust and compiled to WebAssembly to maintain performance. This seems like a good way of simultaneously building an accessible browser-based tool while also writing performant low-level code for the core algorithms.
+As an aside, I came across an interesting project [web-synth](web-synth) by github user [Ameobea](https://github.com/ameobea/) which is browser-based music production tool with a really interesting tech stack. It has a Typescript based frontend which uses the WebAudio API to call DSP routines written in Rust and compiled to WebAssembly to maintain performance. This seems like a good way of simultaneously building an accessible browser-based tool while also writing performant low-level code for the core algorithms.
