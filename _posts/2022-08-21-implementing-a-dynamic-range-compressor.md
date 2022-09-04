@@ -140,6 +140,8 @@ $$
 
 There could be more than four ranges and the thresholds on $f(t_2)$ could be varied as well. The resulting shapes of the attack and release could be represented and edited visually, which would enable a user to program the exact compression dynamics they want. I think this would be particularly useful for creating rhythmic effects in a sidechain scenario.
 
+[Edit 04/09/22] : As I started implementing this, I realized that this scheme doesn't work very well in practice as $f(t_2)$ becomes a less useful quantity for small $R(t_2)$ and useless at $R(t_2)=0$, which is a common case. Using the absolute error $R(t_2)-R'(t_1)$ to set the time constant makes more sense, so the initial implementation will use a threshold on that instead.
+
 # Project idea
 
 I decided in order to learn more about implementing audio DSP in practice an interesting project would be to implement compressor similar in spirit to Ableton Live's compressor, with options for extra parameterisation of the attack and release as described above. I'm planning to make this as a VST3 plugin with [JUCE](https://juce.com/). I'll initially implement it with a bare-minimum frontend to test out how it sounds then add graphical features.
